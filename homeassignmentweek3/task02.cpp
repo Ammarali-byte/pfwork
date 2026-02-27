@@ -5,7 +5,7 @@ int main(){
     cout<<"No of minutes:";
     cin>>minutes;
     cout<<"Frames per second :";
-    cin>>framespersecond;
-    totalframes=minutes*framespersecond*60;
+    cin >> framespersecond;
+    totalframes=minutes * framespersecond * 60;
     cout<<"Total numbers f frames :"<<totalframes;
 }
