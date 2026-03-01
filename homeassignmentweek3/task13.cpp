@@ -1,17 +1,17 @@
 #include<iostream>
 using namespace std;
 int main(){
-    int a,b;
-    cin>>a;
-    cin>>b;
-    a=a+b;
-    cin>>a;
-    b=a+b;
-    cin>>a;
-    b=a+b;
-    cin>>a;
-    b=a+b;
-    cout<<b;
+    int v1,v2;
+    cin>>v1;
+    cin>>v2;
+    v2 = v1 + v2;
+    cin >> v1 ;
+    v2 = v1+v2;
+    cin >> v1;
+    v2 = v1 + v2;
+    cin  >> v1;
+    v2 = v1 + v2;
+    cout << v2;
 
 
 
