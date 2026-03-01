@@ -1,12 +1,22 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-int main(){
-    int a,sum,b,c,d;
-    cout<<"Enter a 4-digit number";
-    cin>>a;
-    b=a%10    ;
-    c=b%10;
-    d=c%10;
-    sum=a+b+c+d;
-    cout<<"The summ of individual digits is : "<<sum;
+
+int main() 
+{
+    int number;
+    
+    cout << "Enter a 4-digit number: ";
+    cin >> number;
+    int digit1, digit2, digit3, digit4, sum;
+    digit1 = number % 10;          
+    number = number / 10;
+    digit2 = number % 10;          
+    number = number / 10;
+    digit3 = number % 10;         
+    number = number / 10;
+    digit4 = number % 10;           
+    sum = digit1 + digit2 + digit3 + digit4;
+    cout << "Sum of individual digits = " << sum << endl;
+
+    return 0;
 }
