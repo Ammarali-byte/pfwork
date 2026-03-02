@@ -5,6 +5,6 @@ int main(){
     cout<<"enter n :";
     cin>>n;
     for(int i=1;i<=n;i++){
-        cout<<"hello word " <<endl;
+        cout<<"I LOVE YOU  " <<endl;
     }
 }
