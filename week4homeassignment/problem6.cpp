@@ -37,6 +37,9 @@ int main (){
     else if ( no == 19 ){
         cout<< "nineteen";
     }
+    else if ( no == 100 ){
+        cout<< "hundred" ;
+    }
        x = no / 10;
        no = no % 10;
       if ( x == 2 ) {
