@@ -40,6 +40,7 @@ int main (){
     else if ( no == 100 ){
         cout<< "hundred" ;
     }
+    if( no > 20 || no < 10){
        x = no / 10;
        no = no % 10;
       if ( x == 2 ) {
@@ -93,6 +94,7 @@ int main (){
     if (no == 9 ){
         cout<< "nine";
     } 
+    }
 } 
     
  
