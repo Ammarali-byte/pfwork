@@ -5,11 +5,12 @@ main ( ){
     cout<<" Enter the number : ";
     cin>>number;
     int digit = 0;
-    while (number >=0 ){
-        if ( number % 10 >= 0){
-            digit = digit + 1;
+    for ( int i =number ; i > 0 ; i/=10){
+        int rem = i%10;
+        if (rem >= 0){
+            digit=digit+1 ;
         }
-        number = number / 10;
+        number = number /10;
     }
     cout<<" Total  number of digits are : "<<digit;
 }
