@@ -1,21 +1,20 @@
 #include<iostream>
 using namespace std;
 main ( ){
-    int digit ,number , frequencychecker = 0;
-    cout<<"Enter number : ";
-    cin>>number;
-    cout<<"Enter digit : ";
-    cin>>digit; 
-    int count = 0;
-    while ( number != 0){
-      int reminder = number % 10 ;
-      if ( reminder == digit ){
-        frequencychecker = frequencychecker + 1;
-        count++ ;
-      }
-      number = number % 10;
-    }
-    cout<<"Frequency of "<<digit <<" in "<<number<<" is : "<<frequencychecker;
+    int num , dig;
+    int frequency = 0;
+    cout<< "Enter number ";
+    cin>>num;
+    cout<<" Enter digit whose frequency to be found ";
+    cin>>dig;
      
-    
+    for ( int i = num ; i > 0 ; i= i/10){
+      int remainder = num % 10;
+      if ( remainder == dig ){
+         frequency = frequency+1;
+      }
+      num/=10;
+    }
+    cout<< " Frequency is : "<<frequency;
+
 }
