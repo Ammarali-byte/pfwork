@@ -1,7 +1,11 @@
 #include<iostream>
 using namespace std;
 main ( ){
-    for ( int i = 1 ; i <= 6 ; i++ ){
+    int num1 , num2 ;
+    char op;
+    int choice;
+    while( true){
+    
     cout<<"\n---SIMPLE CALCULATOR---\n";
     cout<<"1. additionn \n";
     cout<<"2. Subtraction  \n";
@@ -10,10 +14,7 @@ main ( ){
     cout<<"5. Clear the screen  \n";
     cout<<"6. Exit  \n";
     cout<<"Enter your choice (1-6): ";
-    int num1 , num2 ;
-    char op;
-
-    int choice;
+    
     cin>>choice;
 
     if ( choice == 1 ){
