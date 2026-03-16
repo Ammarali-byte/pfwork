@@ -41,8 +41,13 @@ main ( ){
         else if ( choice == 3 ){
             cout<<" Enter the amount to withdraw :";
             cin>>withdrawamount;
+            if ( withdrawamount > balance  ){
+                cout<<"Insufficient balance : "<<"Your balance is : "<<balance  ;
+            }
+            else{
             balance = balance - withdrawamount;
             cout<<" Please collect your cash "<<endl;
+            }
         }
         else if ( choice == 4 ){
             cout<<" Thanks for using ATM machine "<<endl;
