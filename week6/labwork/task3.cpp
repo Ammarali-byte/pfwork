@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 main ( ){
-    int number [4];
+    int number [5];
     cout << "Enter first number ";
     cin>>number[0];
     cout << "Enter second  number ";
