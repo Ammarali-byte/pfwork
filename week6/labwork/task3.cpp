@@ -12,5 +12,5 @@ main ( ){
     cin>>number[3];
     cout << "Enter fifth number ";
     cin>>number[4];
-    cout<<"The second element in arary is : "<< number[2]<<endl<<"The fourth element in arary is :  "<<number[4];
+    cout<<"The 1st element in arary is : "<< number[0]<<endl<<"The last element in arary is :  "<<number[4];
 }
