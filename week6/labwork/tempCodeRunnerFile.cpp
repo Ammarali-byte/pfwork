@@ -1,0 +1,1 @@
+ // char vowel[]={a ,i , e, o, u};
