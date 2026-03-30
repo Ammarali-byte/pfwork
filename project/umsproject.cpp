@@ -42,7 +42,7 @@ main()
         if (userchoice == 1)
         {
             int count = 0;
-            for (int i = 1; i <= 5; i++)
+            for (int i = 1; i < index; i++)
             {
 
                 system("cls");
@@ -74,10 +74,16 @@ main()
                         if (adminoption == 1)
                         {
                             // show student record
-                            cout << "name\tage\tmatric\tFsc\tecat\tpref1\tpref2\tpref3\t" << endl;
-                            for (int i = 0; i < index; i++)
+                            if (nameA[i] != "")
                             {
-                                cout << nameA[i] << "\t" << ageA[i] << "\t" << matricA[i] << "\t" << interA[i] << "\t" << ecatA[i] << "\t" << pref1A[i] << "\t" << pref2A[i] << "\t" << pref3A[i] << endl;
+                                cout << "name\tage\tmatric\tFsc\tecat\tpref1\tpref2\tpref3\t" << endl;
+                                for (int i = 0; i < index; i++)
+                                {
+                                    if (nameA[i] != "")
+                                    {
+                                        cout << nameA[i] << "\t" << ageA[i] << "\t" << matricA[i] << "\t" << interA[i] << "\t" << ecatA[i] << "\t" << pref1A[i] << "\t" << pref2A[i] << "\t" << pref3A[i] << endl;
+                                    }
+                                }
                             }
                         }
                         else if (adminoption == 2)
@@ -94,22 +100,30 @@ main()
                                 {
                                     foundindex = i;
                                     found = true;
-                                    break;
+                                    cout << "name\tage\tmatric\tFsc\tecat\tpref1\tpref2\tpref3\t" << endl;
+
+                                    cout << nameA[foundindex] << "\t" << ageA[foundindex] << "\t"
+                                         << matricA[foundindex] << "\t" << interA[foundindex] << "\t"
+                                         << ecatA[foundindex] << "\t" << pref1A[foundindex] << "\t"
+                                         << pref2A[foundindex] << "\t" << pref3A[foundindex] << endl;
+
+                                    // foundindex = i;
+                                    // found = true;
                                 }
                             }
                             if (found == false)
                             {
                                 cout << "No record found with the name " << name << endl;
                             }
-                            else
-                            {
-                                cout << "name\tage\tmatric\tFsc\tecat\tpref1\tpref2\tpref3\t" << endl;
+                            // else
+                            //  {
+                            //      cout << "name\tage\tmatric\tFsc\tecat\tpref1\tpref2\tpref3\t" << endl;
 
-                                cout << nameA[foundindex] << "\t" << ageA[foundindex] << "\t"
-                                     << matricA[foundindex] << "\t" << interA[foundindex] << "\t"
-                                     << ecatA[foundindex] << "\t" << pref1A[foundindex] << "\t"
-                                     << pref2A[foundindex] << "\t" << pref3A[foundindex] << endl;
-                            }
+                            //     cout << nameA[foundindex] << "\t" << ageA[foundindex] << "\t"
+                            //          << matricA[foundindex] << "\t" << interA[foundindex] << "\t"
+                            //          << ecatA[foundindex] << "\t" << pref1A[foundindex] << "\t"
+                            //          << pref2A[foundindex] << "\t" << pref3A[foundindex] << endl;
+                            // }
 
                             // if(nameA[i] == name){
                             //     cout << "name\tage\tmatric\tFsc\tecat\tpref1\tpref2\tpref3\t" << endl;
@@ -125,30 +139,66 @@ main()
                         {
                             // update student record
                             cout << "Enter name of student you want to update : ";
-                            string nameS;
-                            cin >> nameS;
+                            string name;
+                            cin >> name;
                             bool found = false;
                             bool foundindex = -1;
                             for (int i = 0; i < index; i++)
                             {
-                                if (nameA[i] == nameS)
+                                if (nameA[i] == name)
                                 {
                                     foundindex = i;
                                     found = true;
                                 }
                             }
-                            if (found == false)
+
+                            if (found == true)
                             {
-                                cout << "No record found with the name " << nameS << endl;
+                                cout << "------OLD RECORD--------\n";
+                                cout << "name\tage\tmatric\tFsc\tecat\tpref1\tpref2\tpref3\t" << endl;
+                                cout << nameA[foundindex] << "\t" << ageA[foundindex] << "\t"
+                                     << matricA[foundindex] << "\t" << interA[foundindex] << "\t"
+                                     << ecatA[foundindex] << "\t" << pref1A[foundindex] << "\t"
+                                     << pref2A[foundindex] << "\t" << pref3A[foundindex] << endl;
+                                cout << "------UPDATE RECORD--------\n";
+                                cout << "Enter your name : ";
+                                string name;
+                                cin >> name;
+                                // getline ( cin , name );
+                                int age;
+                                cout << "Enter your age : ";
+                                cin >> age;
+                                float matric;
+                                cout << "Enter your matric marks : ";
+                                cin >> matric;
+                                float inter;
+                                cout << "Enter your fsc marks : ";
+                                cin >> inter;
+                                float ecat;
+                                cout << "Enter your ecat  marks : ";
+                                cin >> ecat;
+                                cout << "Enter Cs ,Ce ,EE as your preferences only \n";
+                                cout << "Enter your first preference : ";
+                                string pref1;
+                                cin >> pref1;
+                                cout << "Enter your second preference : ";
+                                string pref2;
+                                cin >> pref2;
+                                cout << "Enter your third preference : ";
+                                string pref3;
+                                cin >> pref3;
+                                nameA[foundindex] = name;
+                                ageA[foundindex] = age;
+                                matricA[foundindex] = matric;
+                                interA[foundindex] = inter;
+                                ecatA[foundindex] = ecat;
+                                pref1A[foundindex] = pref1;
+                                pref2A[foundindex] = pref2;
+                                pref3A[foundindex] = pref3;
                             }
                             else
                             {
-                                cout << "name\tage\tmatric\tFsc\tecat\tpref1\tpref2\tpref3\t" << endl;
-
-                                cout << nameA[foundindex] << "\t" << ageA[foundindex] << "\t" << matricA[foundindex] << "\t" << interA[foundindex] << "\t" << ecatA[foundindex] << "\t" << pref1A[foundindex] << "\t" << pref2A[foundindex] << "\t" << pref3A[foundindex] << endl;
-                                cout << "press any key to continue ";
-                                getch();
-                                break;
+                                cout << "No record found with the name " << name << endl;
                             }
                         }
                         else if (adminoption == 4)
@@ -158,6 +208,35 @@ main()
                         else if (adminoption == 5)
                         {
                             // delete the student record
+                            cout << "Enter name of student you want to delete : ";
+                            string name;
+                            cin >> name;
+                            bool found = false;
+                            bool foundindex = -1;
+                            for (int i = 0; i < index; i++)
+                            {
+                                if (nameA[i] == name)
+                                {
+                                    foundindex = i;
+                                    found = true;
+                                }
+                            }
+                            if (found == true)
+                            {       
+                            nameA[foundindex] = "";
+                            ageA[foundindex] = 0;
+                            matricA[foundindex] = 0;
+                            interA[foundindex] = 0;
+                            ecatA[foundindex] = 0;
+                            pref1A[foundindex] = "";
+                            pref2A[foundindex] = "";
+                            pref3A[foundindex] = "" ;
+                            cout << "Record of " << name << "  deleted successfully "<< endl;
+                            }
+                            else
+                            {
+                                cout << "No record found with the name " << name << endl;
+                            }
                         }
                         else if (adminoption == 6)
                         {
@@ -186,7 +265,7 @@ main()
                         break;
                     }
                 }
-                cout << "\n Press eny key to conntinue : ";
+                cout << "\n Press any key to conntinue : ";
                 getch();
             }
         }
