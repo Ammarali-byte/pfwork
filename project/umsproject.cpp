@@ -93,37 +93,28 @@ main()
                             string name;
                             cin >> name;
                             bool found = false;
-                            bool foundindex = -1;
+                            int foundindex = -1;
                             for (int i = 0; i < index; i++)
                             {
                                 if (nameA[i] == name)
                                 {
-                                    foundindex = i;
+
                                     found = true;
+                                     foundindex = i;
                                     cout << "name\tage\tmatric\tFsc\tecat\tpref1\tpref2\tpref3\t" << endl;
 
                                     cout << nameA[foundindex] << "\t" << ageA[foundindex] << "\t"
                                          << matricA[foundindex] << "\t" << interA[foundindex] << "\t"
                                          << ecatA[foundindex] << "\t" << pref1A[foundindex] << "\t"
                                          << pref2A[foundindex] << "\t" << pref3A[foundindex] << endl;
-
-                                    // foundindex = i;
-                                    // found = true;
+                                   
                                 }
                             }
-                            if (found == false)
-                            {
+                                if (found == false)
+                                 {
                                 cout << "No record found with the name " << name << endl;
                             }
-                            // else
-                            //  {
-                            //      cout << "name\tage\tmatric\tFsc\tecat\tpref1\tpref2\tpref3\t" << endl;
-
-                            //     cout << nameA[foundindex] << "\t" << ageA[foundindex] << "\t"
-                            //          << matricA[foundindex] << "\t" << interA[foundindex] << "\t"
-                            //          << ecatA[foundindex] << "\t" << pref1A[foundindex] << "\t"
-                            //          << pref2A[foundindex] << "\t" << pref3A[foundindex] << endl;
-                            // }
+                            
 
                             // if(nameA[i] == name){
                             //     cout << "name\tage\tmatric\tFsc\tecat\tpref1\tpref2\tpref3\t" << endl;
@@ -142,7 +133,7 @@ main()
                             string name;
                             cin >> name;
                             bool found = false;
-                            bool foundindex = -1;
+                            int foundindex = -1;
                             for (int i = 0; i < index; i++)
                             {
                                 if (nameA[i] == name)
@@ -204,6 +195,22 @@ main()
                         else if (adminoption == 4)
                         {
                             // generate merit list
+                            for (int i = 0; i < index; i++)
+                            {
+                                float aggri = (matricA[i] / 1100) * 0.30 + (interA[i] / 1100) * 0.30 + (ecatA[i] / 400) * 0.40;
+                                aggriA[i] = aggri;
+                            }
+                            // code to display all data with aggregate
+                            cout << "name\tage\taggri " << endl;
+                            for (int i = 0; i < index; i++)
+                            {
+                                if (nameA[i] != "")
+                                {
+                                    cout << nameA[i] << "\t" << ageA[i] << "\t" << aggriA[i] << endl;
+                                }
+                            }
+
+                            // code to display sorted data with aggregate
                         }
                         else if (adminoption == 5)
                         {
@@ -212,7 +219,7 @@ main()
                             string name;
                             cin >> name;
                             bool found = false;
-                            bool foundindex = -1;
+                            int foundindex = -1;
                             for (int i = 0; i < index; i++)
                             {
                                 if (nameA[i] == name)
@@ -222,16 +229,16 @@ main()
                                 }
                             }
                             if (found == true)
-                            {       
-                            nameA[foundindex] = "";
-                            ageA[foundindex] = 0;
-                            matricA[foundindex] = 0;
-                            interA[foundindex] = 0;
-                            ecatA[foundindex] = 0;
-                            pref1A[foundindex] = "";
-                            pref2A[foundindex] = "";
-                            pref3A[foundindex] = "" ;
-                            cout << "Record of " << name << "  deleted successfully "<< endl;
+                            {
+                                nameA[foundindex] = "";
+                                ageA[foundindex] = 0;
+                                matricA[foundindex] = 0;
+                                interA[foundindex] = 0;
+                                ecatA[foundindex] = 0;
+                                pref1A[foundindex] = "";
+                                pref2A[foundindex] = "";
+                                pref3A[foundindex] = "";
+                                cout << "Record of " << name << "  deleted successfully " << endl;
                             }
                             else
                             {
