@@ -5,7 +5,7 @@ using namespace std ;
 main( ){
 
     //  TOTAL SIZE
-    int totalstudents = 1000;
+    int totalstudents = 10;
     int index = 0;
 
     // --DATA STRUCTURE--
@@ -27,18 +27,23 @@ main( ){
     cout<<"-----------------------------------------------------------\n";
 
     cout <<"UNIVERSITY MANAGEMENT SYSTEM MENU :\n\n";
-    cout<<"1-User Menu "<<endl;
+    cout<<"1-admin Menu "<<endl;
     cout<<"2-Student Menu "<<endl;
     cout<<"3-Exit "<<endl;
 
     //taking choice from the user 
     cout<<"Enter your choice : ";
-    int choice ;
-    cin>>choice;
-    cout<<"you chosed option "<<choice<<endl;
+    int userchoice ;
+    cin>>userchoice;
+    cout<<"you chosed option "<<userchoice<<endl;
 
-    if (choice == 1 ){
-        //this is admin menu 
+    if (userchoice == 1 ){
+        int count = 0 ;
+    for (int i = 1 ; i <= 3 ; i++ ){
+
+         system("cls");
+    
+            //this is admin menu 
         cout<<"ADMIN MENU  "<<endl;
         string username ;
         string password ;
@@ -47,21 +52,75 @@ main( ){
         cout<<"Enter password : ";
         cin>>password;
         if (username== "admin" && password =="1234" ){
-            cout<<"---------USER MENU-----------\n";
-            cout<<"1-Add Student \n";
-            cout<<"2-Remove Student\n";
-            cout<<"3-View Students \n";
-    
+            cout<<"Login successfully \n";
+        while(true){
+            system("cls");
+            
+            cout<<"1-Show all students"<<endl;
+            cout<<"2-Search student  "<<endl;
+            cout<<"3-Update student record "<<endl;
+            cout<<"4-Generate merit list "<<endl;
+            cout<<"5-logout "<<endl;
+            cout<<"choose your option : ";
+            int adminoption ;
+            cin>>adminoption;
+            if(adminoption == 1){
+                //show student record
+                cout<<"name\tage\tmatric\tFsc\tecat\tpref1\tpref2\tpref3\t"<<endl;
+                for (int i = 0 ; i < index ; i++){
+                    cout<<nameA[i]<<"\t"<<ageA[i]<<"\t"<<matricA[i]<<"\t"<<interA[i]<<"\t"<<ecatA[i]<<"\t"<<pref1A[i]<<"\t"<<pref2A[i]<<"\t"<<pref3A[i]<<endl;
+                }
+            }
+            else if(adminoption == 2){
+                    //search student record
+                }
+            else if(adminoption == 3){
+                    //update student record
+                }
+            else if(adminoption == 4){
+                    //generate merit list
+                }
+            else if(adminoption == 5){
+                        cout<<"Logging out \n";
+                        break;
+                    }
+            else{
+                cout<<"You entered wrong option \n";
+            }
+            cout<<"press any key to continue ";
+            getch();
+            
         }
+            
+
+            getch();
+            break;
+        }
+        else{
+            cout<<"You entered wrong username or password ";
+            count = count + 1 ;
+        if (count == 3 ){
+            cout<<"You have entered wrong username and password 3 times \n";
+            cout<<"Exiting the system \n";
+            break;
+        }
+        }
+        cout<<"\n Press eny key to conntinue : ";
         getch();
     }
-    else if (choice == 2 ){
+    }
+    
+    
+
+    
+    else if (userchoice == 2 ){
         system("cls");
+        //taking student data
         cout<<" STUDENT MENU  "<<endl;
         cout<<"Enter your name : ";
         string name ;
         cin>>name;
-        //  getline ( cin , name );
+        // getline ( cin , name );
         int age ;
         cout<<"Enter your age : ";
         cin>>age;
@@ -84,7 +143,7 @@ main( ){
         cout<< "Enter your third preference : ";
         string pref3; 
         cin >> pref3;
-
+       //saving student data in arrays
         nameA[index] = name;
         ageA[index] = age ;
         matricA[index] = matric;
@@ -99,14 +158,15 @@ main( ){
         cout<<"\n Press eny key to conntinue : ";
         getch();
     }
-    else if(choice == 3 ){
+    else if(userchoice == 3 ){
         cout<<"Exiting the system \n";
         break;
     }
     else {
         cout<<"You entered the wrong choice \n";
     }
+    }
 
-}
-    cout<<"Thanks for using this software ";
+    //end of the program
+    cout<<"Thanks for using this software \n"; 
 }
