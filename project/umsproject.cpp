@@ -96,6 +96,7 @@ main( ){
         index = index + 1;
 
         cout<<"Your data has been saved ";
+        cout<<"\n Press eny key to conntinue : ";
         getch();
     }
     else if(choice == 3 ){
