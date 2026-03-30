@@ -33,11 +33,13 @@ main( ){
 
     //taking choice from the user 
     cout<<"Enter your choice : ";
-    int choice ;
-    cin>>choice;
-    cout<<"you chosed option "<<choice<<endl;
+    int userchoice ;
+    cin>>userchoice;
+    cout<<"you chosed option "<<userchoice<<endl;
 
-    if (choice == 1 ){
+    if (userchoice == 1 ){
+        int count = 0 ;
+    for (int i = 1 ; i <= 3 ; i++ ){
 
          system("cls");
     
@@ -51,16 +53,36 @@ main( ){
         cin>>password;
         if (username== "admin" && password =="1234" ){
             cout<<"Login successfully ";
+
+            cout<<"1-Show all students"<<endl;
+            cout<<"2-Search student  "<<endl;
+            cout<<"3-Update student record "<<endl;
+            cout<<"4-Generate merit list "<<endl;
+            cout<<"choose your option : ";
+            int adminoption ;
+            cin>>adminoption;
+
+            getch();
+            break;
         }
         else{
             cout<<"You entered wrong username or password ";
+            count = count + 1 ;
+        if (count == 3 ){
+            cout<<"You have entered wrong username and password 3 times \n";
+            cout<<"Exiting the system \n";
+            break;
         }
+        }
+        cout<<"\n Press eny key to conntinue : ";
+        getch();
+    }
     }
     
     
 
     
-    else if (choice == 2 ){
+    else if (userchoice == 2 ){
         system("cls");
         cout<<" STUDENT MENU  "<<endl;
         cout<<"Enter your name : ";
@@ -104,7 +126,7 @@ main( ){
         cout<<"\n Press eny key to conntinue : ";
         getch();
     }
-    else if(choice == 3 ){
+    else if(userchoice == 3 ){
         cout<<"Exiting the system \n";
         break;
     }
