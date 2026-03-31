@@ -35,11 +35,11 @@ main()
 
         // taking choice from the user
         cout << "Enter your choice : ";
-        int userchoice;
+        string userchoice;
         cin >> userchoice;
         cout << "you chosed option " << userchoice << endl;
 
-        if (userchoice == 1)
+        if (userchoice == "1")
         {
             int count = 0;
             for (int i = 1; i < index; i++)
@@ -69,9 +69,9 @@ main()
                         cout << "5-Delete student record " << endl;
                         cout << "6-logout " << endl;
                         cout << "choose your option : ";
-                        int adminoption;
+                        string adminoption;
                         cin >> adminoption;
-                        if (adminoption == 1)
+                        if (adminoption == "1")
                         {
                             // show student record
                             if (nameA[i] != "")
@@ -86,7 +86,7 @@ main()
                                 }
                             }
                         }
-                        else if (adminoption == 2)
+                        else if (adminoption == "2")
                         {
                             // seach student by name
                             cout << "Enter name of student you want to search : ";
@@ -100,21 +100,19 @@ main()
                                 {
 
                                     found = true;
-                                     foundindex = i;
+                                    foundindex = i;
                                     cout << "name\tage\tmatric\tFsc\tecat\tpref1\tpref2\tpref3\t" << endl;
 
                                     cout << nameA[foundindex] << "\t" << ageA[foundindex] << "\t"
                                          << matricA[foundindex] << "\t" << interA[foundindex] << "\t"
                                          << ecatA[foundindex] << "\t" << pref1A[foundindex] << "\t"
                                          << pref2A[foundindex] << "\t" << pref3A[foundindex] << endl;
-                                   
                                 }
                             }
-                                if (found == false)
-                                 {
+                            if (found == false)
+                            {
                                 cout << "No record found with the name " << name << endl;
                             }
-                            
 
                             // if(nameA[i] == name){
                             //     cout << "name\tage\tmatric\tFsc\tecat\tpref1\tpref2\tpref3\t" << endl;
@@ -126,7 +124,7 @@ main()
                             // }
                         }
 
-                        else if (adminoption == 3)
+                        else if (adminoption == "3")
                         {
                             // update student record
                             cout << "Enter name of student you want to update : ";
@@ -192,7 +190,7 @@ main()
                                 cout << "No record found with the name " << name << endl;
                             }
                         }
-                        else if (adminoption == 4)
+                        else if (adminoption == "4")
                         {
                             // generate merit list
                             for (int i = 0; i < index; i++)
@@ -212,7 +210,7 @@ main()
 
                             // code to display sorted data with aggregate
                         }
-                        else if (adminoption == 5)
+                        else if (adminoption == "5")
                         {
                             // delete the student record
                             cout << "Enter name of student you want to delete : ";
@@ -244,10 +242,12 @@ main()
                             {
                                 cout << "No record found with the name " << name << endl;
                             }
+
                         }
-                        else if (adminoption == 6)
+                        else if (adminoption == "6")
                         {
                             cout << "Logging out \n";
+                            cout << "Press any key to continue ";
                             break;
                         }
                         else
@@ -277,7 +277,7 @@ main()
             }
         }
 
-        else if (userchoice == 2)
+        else if (userchoice == "2")
         {
             system("cls");
             // taking student data
@@ -323,7 +323,7 @@ main()
             cout << "\n Press eny key to conntinue : ";
             getch();
         }
-        else if (userchoice == 3)
+        else if (userchoice == "3")
         {
             cout << "Exiting the system \n";
             break;
