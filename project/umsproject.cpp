@@ -7,7 +7,7 @@ main()
 
     //  TOTAL SIZE
     int totalstudents = 1000;
-    int index = 5;
+    int index = 5; // this variable will keep the record of total students in the system
 
     // --DATA STRUCTURE--
     string nameA[totalstudents] = {"Ali", "Ahmed", "Ammar", "Hassan", "Hussain"};
@@ -28,6 +28,7 @@ main()
         cout << "--------------UNIVERSITY MANAGEMENT SYSTEM-----------------\n";
         cout << "-----------------------------------------------------------\n";
 
+        // main menu of UMS
         cout << "UNIVERSITY MANAGEMENT SYSTEM MENU :\n\n";
         cout << "1-admin Menu " << endl;
         cout << "2-Student Menu " << endl;
@@ -61,6 +62,7 @@ main()
                     while (true)
                     {
                         system("cls");
+                        // admin menu options
 
                         cout << "1-Show all students" << endl;
                         cout << "2-Search student  " << endl;
@@ -192,12 +194,59 @@ main()
                         }
                         else if (adminoption == "4")
                         {
-                            // generate merit list
+                            // code to calculate aggregate
                             for (int i = 0; i < index; i++)
                             {
-                                float aggri = (matricA[i] / 1100) * 0.30 + (interA[i] / 1100) * 0.30 + (ecatA[i] / 400) * 0.40;
+                                float aggri = (matricA[i] / 1100) * 30 + (interA[i] / 1100) * 30 + (ecatA[i] / 400) * 40;
                                 aggriA[i] = aggri;
                             }
+                            for (int i = 0; i > index; i++)
+                            {
+                                for (int j = i + 1; j < index; j++)
+                                {
+                                    if (aggriA[i] > aggriA[j])
+                                    {
+
+                                        // swap name
+                                        string tempname = nameA[i];
+                                        nameA[i] = nameA[j];
+                                        nameA[j] = tempname;
+                                        // swap age
+                                        int tempage = ageA[i];
+                                        ageA[i] = ageA[j];
+                                        ageA[j] = tempage;
+                                        // swap matric
+                                        float tempmatric = matricA[i];
+                                        matricA[i] = matricA[j];
+                                        matricA[j] = tempmatric;
+                                        // swap inter
+                                        float tempinter = interA[i];
+                                        interA[i] = interA[j];
+                                        interA[j] = tempinter;
+                                        // swap ecat
+                                        float tempecat = ecatA[i];
+                                        ecatA[i] = ecatA[j];
+                                        ecatA[j] = tempecat;
+                                        // swap pref1
+                                        string temppref1 = pref1A[i];
+                                        pref1A[i] = pref1A[j];
+                                        pref1A[j] = temppref1;
+                                        // swap pref2
+                                        string temppref2 = pref2A[i];
+                                        pref2A[i] = pref2A[j];
+                                        pref2A[j] = temppref2;
+                                        // swap pref3
+                                        string temppref3 = pref3A[i];
+                                        pref3A[i] = pref3A[j];
+                                        pref3A[j] = temppref3;
+                                        // swap aggregate
+                                        float temp = aggriA[i];
+                                        aggriA[i] = aggriA[j];
+                                        aggriA[j] = temp;
+                                    }
+                                }
+                            }
+
                             // code to display all data with aggregate
                             cout << "name\tage\taggri " << endl;
                             for (int i = 0; i < index; i++)
@@ -207,8 +256,56 @@ main()
                                     cout << nameA[i] << "\t" << ageA[i] << "\t" << aggriA[i] << endl;
                                 }
                             }
+                            // Code for Admission
+                            cout << "\n-------MERIT LIST-------" << endl;
+                            cout << "Name\tAggregate\t\tAdmitted To" << endl;
 
-                            // code to display sorted data with aggregate
+                            int csseats = 2, ceseats = 2, eeseats = 2, meseats = 2;
+
+                            for (int i = 0; i < index; i++)
+                            {
+                                if (nameA[i] != "")
+                                {
+                                    string prefs[3] = {pref1A[i], pref2A[i], pref3A[i]};
+                                    bool admitted = false;
+
+                                    for (int p = 0; p < 3; p++)
+                                    {
+                                        if (admitted == false)
+                                        {
+                                            if (prefs[p] == "CS" && csseats > 0)
+                                            {
+                                                cout << nameA[i] << "\t" << aggriA[i] << " %\t\t" << "CS" << endl;
+                                                csseats--;
+                                                admitted = true;
+                                            }
+                                            else if (prefs[p] == "CE" && ceseats > 0)
+                                            {
+                                                cout << nameA[i] << "\t" << aggriA[i] << "  %\t\t" << "CE" << endl;
+                                                ceseats--;
+                                                admitted = true;
+                                            }
+                                            else if (prefs[p] == "EE" && eeseats > 0)
+                                            {
+                                                cout << nameA[i] << "\t" << aggriA[i] << " %\t\t" << "EE" << endl;
+                                                eeseats--;
+                                                admitted = true;
+                                            }
+                                            else if (prefs[p] == "ME" && meseats > 0)
+                                            {
+                                                cout << nameA[i] << "\t" << aggriA[i] << " %\t\t" << "ME" << endl;
+                                                meseats--;
+                                                admitted = true;
+                                            }
+                                        }
+                                    }
+
+                                    if (admitted == false)
+                                    {
+                                        cout << nameA[i] << "\t" << aggriA[i] << " %\t\tNot Admitted (No seats available)" << endl;
+                                    }
+                                }
+                            }
                         }
                         else if (adminoption == "5")
                         {
@@ -242,7 +339,6 @@ main()
                             {
                                 cout << "No record found with the name " << name << endl;
                             }
-
                         }
                         else if (adminoption == "6")
                         {
