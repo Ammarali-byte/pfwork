@@ -200,11 +200,11 @@ main()
                                 float aggri = (matricA[i] / 1100) * 30 + (interA[i] / 1100) * 30 + (ecatA[i] / 400) * 40;
                                 aggriA[i] = aggri;
                             }
-                            for (int i = 0; i > index; i++)
+                            for (int i = 0; i < index; i++)
                             {
                                 for (int j = i + 1; j < index; j++)
                                 {
-                                    if (aggriA[i] > aggriA[j])
+                                    if (aggriA[i] < aggriA[j])
                                     {
 
                                         // swap name
