@@ -11,4 +11,6 @@ main ( ){
         cin >> num;
     }
     cout<<"Sum is : "<<sum;
+    
+
 }
