@@ -6,6 +6,7 @@ main()
 {
     while (true)
     {
+        //main header
         cout << "-------------------------------------------------------\n";
         cout << "--------------Sernity spring resort--------------------\n";
         cout << "-------------------------------------------------------\n";
@@ -15,6 +16,7 @@ main()
         cout<<"3-Information about leepa valley \n";
         cout<<"4- Exit \n";
 
+        //taking choice from user
         string choice;
         cout << "Enter your choice ";
         cin>>choice;
