@@ -7,9 +7,23 @@ main()
     while (true)
     {
         //main header
-        cout << "-------------------------------------------------------\n";
-        cout << "--------------Sernity spring resort--------------------\n";
-        cout << "-------------------------------------------------------\n";
+        system("color 06");
+        cout << "     ###########         ####     \n";  
+        cout << "  ###   ####    ###     ##   ##                                           \n";
+        cout << " ###  ##    ##   ###     ####                                        \n";
+        cout << " ###  ##    ##   ###    ##   ##                                            \n";
+        cout << " ###   ##       ###          ##                               \n";
+        cout << "  ###   ####                                                \n";
+        cout << "     ###########                                                 \n";
+        cout << "  ##   ###  ##  ###                                               \n";
+        cout << " ###   ###   ##  ###                                              \n";
+        cout << " ###   ###    ##  ###                                              \n";
+        cout << " ###   ###     ##  ###                                               \n";
+        cout << " ###   ###      #####                                         \n";
+        cout << "                                                              \n";
+        cout << "                                                              \n";
+        cout << "                                                              \n";
+        cout << "                                                              \n";
         cout << "Welcome to SERENITY SPRING RESORT \n";
         cout << "1-Management menu \n";
         cout << "2-Guest menu \n";
