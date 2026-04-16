@@ -4,14 +4,14 @@
 using namespace std;
 main()
 {
-    string nameArr[10];
+    // DATA Structures
     int dateArr[10];
     double cnicArr[10];
     while (true)
     {
 
         // main header
-        system("color 06");
+
         system("cls");
         cout << "     ###########        ####     ####    #######          \n";
         cout << "  ###   ####    ###   ##    ## ##    ##  ##     ##                         \n";
@@ -44,8 +44,6 @@ main()
         {
             system("cls");
             cout << "Mangement menu : \n";
-
-            
         }
         else if (choice == "2")
         {
@@ -63,8 +61,6 @@ main()
             system("cls");
             cout << "Information about Leepa valley kashmir \n";
             cout << "Leepa valley is located in Azad Kashmir \n";
-
-            
         }
         else if (choice == "4")
         {
