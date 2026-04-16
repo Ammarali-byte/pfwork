@@ -5,8 +5,29 @@ using namespace std;
 main()
 {
     // DATA Structures
-    int dateArr[10];
-    double cnicArr[10];
+    string guestnames[10];
+    int days[10];
+    int roomprice[10];
+    int roomstatus[10];
+
+    // intializing room availability
+    for (int i = 0; i < 10; i++)
+    {
+        roomstatus[i] = 0;
+    }
+
+    // Room prices
+    roomprice[0] = 7500;
+    roomprice[1] = 7500;
+    roomprice[2] = 7500;
+    roomprice[3] = 7500;
+    roomprice[4] = 10000;
+    roomprice[5] = 10000;
+    roomprice[6] = 10000;
+    roomprice[7] = 10000;
+    roomprice[7] = 15000;
+    roomprice[8] = 15000;
+
     while (true)
     {
 
@@ -14,21 +35,17 @@ main()
 
         system("cls");
         cout << "     ###########        ####     ####    #######          \n";
-        cout << "  ###   ####    ###   ##    ## ##    ##  ##     ##                         \n";
-        cout << " ###  ##    ##   ###  ##       ##        ##      ##             \n";
-        cout << " ###  ##    ##   ###    ####     ####    ## #####                         \n";
-        cout << " ###   ##       ###         ##       ##  ##   ##             \n";
-        cout << "  ###   ####          ##    ## ##    ##  ##     ##          \n";
-        cout << "     ###########        ####     ####    ##      ##                  \n";
-        cout << "  ##   ###  ##  ###                                              \n";
-        cout << " ###   ###   ##  ###                                              \n";
-        cout << " ###   ###    ##  ###                                              \n";
-        cout << " ###   ###     ##  ###                                               \n";
-        cout << " ###   ###      #####                                         \n";
-        cout << "                                                              \n";
-        cout << "                                                              \n";
-        cout << "                                                              \n";
-        cout << "                                                              \n";
+        cout << "  ###   ####    ###   ##    ## ##    ##  ##     ##        \n";
+        cout << " ###  ##    ##   ###  ##       ##        ##      ##       \n";
+        cout << " ###  ##    ##   ###    ####     ####    ## #####         \n";
+        cout << " ###   ##       ###         ##       ##  ##   ##          \n";
+        cout << "  ###   ####          ##    ## ##    ##  ##     ##        \n";
+        cout << "     ###########        ####     ####    ##      ##       \n";
+        cout << "  ##   ###  ##  ###                                       \n";
+        cout << " ###   ###   ##  ###                                      \n";
+        cout << " ###   ###    ##  ###                                     \n";
+        cout << " ###   ###     ##  ###                                    \n";
+        cout << " ###   ###      #####                                     \n";
 
         cout << "Welcome to SERENITY SPRING RESORT \n";
         cout << "1-Management menu \n";
@@ -47,15 +64,57 @@ main()
         }
         else if (choice == "2")
         {
-            system("cls");
-            cout << "GUEST MENU \n";
-            cout << "\nEnter your name :";
-            string name;
-            getline(cin, name);
-            cout << "\n Enter the date of your reservation : ";
-            int date;
-            cin >> date;
+             system("cls");
+            while (true)
+            {
+
+                system("cls");
+                cout << "GUEST MENU \n";
+                cout << "1- Room Booking \n";
+                cout << "2- View Available Rooms \n";
+                cout << "3- View my Booking \n";
+                cout << "4- Exit \n";
+                string guestchoice;
+                cout << "Enter your choice ";
+                cin >> guestchoice;
+                if (guestchoice == "1")
+                {
+                    // Room Booking code
+                }
+                else if (guestchoice == "2")
+                {
+                    system("cls");
+                    // Available rooms showing 
+                    for (int i = 0 ; i< 10 ; i++){
+                        if ( roomstatus[i] == 0 ){
+                            cout<<"Room No "<<i+1 <<" is available\n";
+                        }
+                        else{
+                            cout<<"Room No "<<i+1<<" is taken\n";
+                        }
+                        
+                    }
+                    cout << "\nPress any key to continue \n";
+
+                    getch();
+                }
+                else if (guestchoice == "3")
+                {
+                    // Viewing my booking 
+                }
+                else if (guestchoice == "4")
+                {
+                    cout << " Returning to main menu ";
+                    break;
+                }
+                else
+                {
+                    cout << "You entered wrong choice ";
+                }
+            }
         }
+           
+        
         else if (choice == "3")
         {
             system("cls");
