@@ -5,7 +5,8 @@ using namespace std;
 main()
 {
     // DATA Structures
-    string guestnames[10];
+    int room;
+    char guestnames[10][40];
     int days[10];
     int roomprice[10];
     int roomstatus[10];
@@ -80,6 +81,40 @@ main()
                 if (guestchoice == "1")
                 {
                     // Room Booking code
+                    cout<<"Enter Room number ";
+                    cin>>room;
+                    if (roomstatus[room-1 ] == 0 ){
+                        cout<<"Enter your name : ";
+                        cin.ignore( );
+                        cin.getline( guestnames[room-1] , 40);
+                        cout<<"How many days you want to stay :";
+                        cin>>days[room-1];
+                        if (room< 4 ){
+                            cout<<"--------Standard Room------- \n Price is "<<roomprice[room-1]<<endl;
+                            cout<<"You succesfully booked Standard room  No "<<room;
+                            roomstatus[room - 1] = 1;
+                        }
+                        else if (room > 3 && room < 8)
+                        {
+                            cout << "-------Deluxe  Room-------- \n Price is " << roomprice[room - 1]<<endl;
+                            cout << "You succesfully booked Deluxe room  No " << room;
+                            roomstatus[room - 1] = 1;
+                        }
+                        else if (room > 7 && room < 10 )
+                        {
+                            cout << "-------SWeet  Room-------- \n Price is " << roomprice[room - 1]<<endl;
+                            cout << "You succesfully booked Sweet  room  No " << room;
+                            roomstatus[room-1] = 1;
+                        }
+                        
+                        else{
+                            cout<<"No such room available";
+                        }
+                    }
+                    else{
+                        cout<<" Soory for Inconvience \n Room is already booked ";
+                    }
+                    getch();
                 }
                 else if (guestchoice == "2")
                 {
