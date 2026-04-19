@@ -10,9 +10,14 @@ main()
     int room, month, date;
     int index;
     string guestnames[3720];
+    string allguestnames[3720];
     int daystay[3720];
+    int alldaystay[3720];
     int roomprice[11];
     int roomstatus[3720];
+    int allroomstatus[3720];
+
+    // login crediantials
     int pin[3];
     int correctpin = 1234;
     string username;
@@ -22,6 +27,7 @@ main()
     for (int i = 0; i < 3720; i++)
     {
         roomstatus[i] = 0;
+        allroomstatus[i] = 0;
     }
 
     // Room prices
@@ -147,13 +153,16 @@ main()
                             cout << "Enter your name : ";
                             cin.ignore();
                             getline(cin, guestnames[index]);
+                            allguestnames[index] = guestnames[index];
                             cout << "How many days you want to stay : ";
                             cin >> daystay[index];
+                            alldaystay[index] = daystay[index];
                             if (room <= 4)
                             {
                                 cout << "--------Standard Room------- " << endl;
                                 cout << "You successfully booked Standard room  No " << room;
                                 roomstatus[index] = 1;
+                                allroomstatus[index] = 1;
                             }
 
                             else if (room > 3 && room <= 8)
@@ -161,12 +170,14 @@ main()
                                 cout << "-------Deluxe  Room-------- " << endl;
                                 cout << "You successfully booked Deluxe room  No " << room;
                                 roomstatus[index] = 1;
+                                allroomstatus[index] = 1;
                             }
                             else if (room > 8 && room <= 10)
                             {
                                 cout << "-------SWeet  Room-------- " << endl;
                                 cout << "You successfully booked Suite  room  No " << room;
                                 roomstatus[index] = 1;
+                                allroomstatus[index] = 1;
                             }
 
                             else
@@ -291,7 +302,7 @@ main()
                         int found = 0;
                         for (int i = 0; i < 3720; i++)
                         {
-                            if (roomstatus[i] == 1)
+                            if (allroomstatus[i] == 1)
                             {
 
                                 found = 1;
@@ -302,8 +313,8 @@ main()
                                 cout << "Date " << dates << endl;
                                 cout << "Month " << months << endl;
                                 cout << "Room " << roomnum << endl;
-                                cout << "Name of guest " << guestnames[i] << endl;
-                                cout << "Days stayed: " << daystay[i] << endl
+                                cout << "Name of guest " << allguestnames[i] << endl;
+                                cout << "Days stayed: " << alldaystay[i] << endl
                                      << endl;
                             }
                         }
@@ -332,7 +343,7 @@ main()
                 cout << "Too many login attempts \n";
                 break;
             }
-        }//end of adminmenu 
+        } // end of adminmenu
 
         // Guest menu code
         else if (choice == "2")
@@ -394,13 +405,18 @@ main()
                         cout << "Enter your name : ";
                         cin.ignore();
                         getline(cin, guestnames[index]);
+                        getline(cin, allguestnames[index]);
+                        allguestnames[index] = guestnames[index];
                         cout << "How many days you want to stay : ";
                         cin >> daystay[index];
+                        cin >> alldaystay[index];
+                        alldaystay[index] = daystay[index];
                         if (room <= 4)
                         {
                             cout << "--------Standard Room------- " << endl;
                             cout << "You successfully booked Standard room  No " << room;
                             roomstatus[index] = 1;
+                            allroomstatus[index] = 1;
                         }
 
                         else if (room > 3 && room <= 8)
@@ -408,12 +424,14 @@ main()
                             cout << "-------Deluxe  Room-------- " << endl;
                             cout << "You successfully booked Deluxe room  No " << room;
                             roomstatus[index] = 1;
+                            allroomstatus[index] = 1;
                         }
                         else if (room > 8 && room <= 10)
                         {
                             cout << "-------SWeet  Room-------- " << endl;
                             cout << "You successfully booked Suite  room  No " << room;
                             roomstatus[index] = 1;
+                            allroomstatus[index] = 1;
                         }
 
                         else
@@ -500,7 +518,7 @@ main()
                     cout << "Press any key to continue ";
                     getch();
                 }
-                
+
                 // Information about Leepa Valley
                 else if (guestchoice == "5")
                 {
@@ -519,7 +537,7 @@ main()
                     cout << "|               *      *                                                                                                          |\n";
                     cout << "|              *          *                                                                       12 Hazari top                   |\n";
                     cout << "|            *               *                Panjal Gali                                        *          *                     |\n";
-                    cout << "|         *                     *                                                              *              *                   |\n";
+                    cout << "|         *                     *                                                              *              *        kojean     |\n";
                     cout << "|           *                       *                                                        *                  *                 |\n";
                     cout << "|             *                        *                                                   *                     *                |\n";
                     cout << "|               *                          *                                             *                        *               |\n";
@@ -530,7 +548,7 @@ main()
                     cout << "|                  *                                 *                                  *                             *           |\n";
                     cout << "|                    *                                 *                               *                               *          |\n";
                     cout << "|               *  *                                     *    *      *     *    *     *                                 *         |\n";
-                    cout << "|            *                                                                       *                                  *         |\n";
+                    cout << "|            *                                                     bathwar gali      *                                  *         |\n";
                     cout << "|          *                                                                        *                                   *         |\n";
                     cout << "|         *   *  *                                                                 *                                    *         |\n";
                     cout << "|                  *                                                              *                                     *         |\n";
