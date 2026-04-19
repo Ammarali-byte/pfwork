@@ -5,10 +5,15 @@
 using namespace std;
 main()
 {
-    // DATA Structures
+    
 
-    int room, month, date;
+    int DAYS = 31;
+    int MONTHS = 12;
+    int ROOMS = 10;
+    int room = 10, month = 12, date = 31;
     int index;
+
+    // DATA Structures
     string guestnames[3720];
     string allguestnames[3720];
     int daystay[3720];
@@ -106,11 +111,12 @@ main()
                     cout << "--------------------Management menu--------------------\n";
                     cout << "-------------------------------------------------------\n";
                     cout << "1 - Add booking     \n";
-                    cout << "2 - Search booking \n";
-                    cout << "3 - Check out      \n";
-                    cout << "4 - show available rooms \n";
-                    cout << "5 - Check  all time Reservation  \n";
-                    cout << "6 - Exit \n";
+                    cout << "2 - Search booking by date \n";
+                    cout << "3 - Search booking by name \n";
+                    cout << "4 - Check out      \n";
+                    cout << "5 - show available rooms \n";
+                    cout << "6 - Check  all time Reservation  \n";
+                    cout << "7 - Exit \n";
                     // taking choice from admin
                     string adminchoice;
                     cout << "Enter your choice : ";
@@ -118,6 +124,7 @@ main()
                     // Room Booking code
                     if (adminchoice == "1")
                     {
+                        system("cls");
 
                         cout << "\nEnter Date(1-31) ";
                         cin >> date;
@@ -160,7 +167,7 @@ main()
                             if (room <= 4)
                             {
                                 cout << "--------Standard Room------- " << endl;
-                                cout << "You successfully booked Standard room  No " << room;
+                                cout << "You successfully booked Standard room  No " << room << endl;
                                 roomstatus[index] = 1;
                                 allroomstatus[index] = 1;
                             }
@@ -168,26 +175,26 @@ main()
                             else if (room > 3 && room <= 8)
                             {
                                 cout << "-------Deluxe  Room-------- " << endl;
-                                cout << "You successfully booked Deluxe room  No " << room;
+                                cout << "You successfully booked Deluxe room  No " << room << endl;
                                 roomstatus[index] = 1;
                                 allroomstatus[index] = 1;
                             }
                             else if (room > 8 && room <= 10)
                             {
                                 cout << "-------SWeet  Room-------- " << endl;
-                                cout << "You successfully booked Suite  room  No " << room;
+                                cout << "You successfully booked Suite  room  No " << room << endl;
                                 roomstatus[index] = 1;
                                 allroomstatus[index] = 1;
                             }
 
                             else
                             {
-                                cout << "No such room available";
+                                cout << "No such room available" << endl;
                             }
                         }
                         else
                         {
-                            cout << " Soory for Inconvience \n Room is not available  ";
+                            cout << " Soory for Inconvience \n Room is not available  \n";
                         }
                         cout << "Press any key to continue ";
 
@@ -196,6 +203,7 @@ main()
                     // search booking code
                     else if (adminchoice == "2")
                     {
+                        system("cls");
                         cout << "\nEnter Date(1-31) ";
                         cin >> date;
                         if (date < 1 || date > 31)
@@ -232,8 +240,38 @@ main()
                         cout << "Press any key to continue ";
                         getch();
                     }
+                    // Search Booking by name
                     else if (adminchoice == "3")
                     {
+                        system("cls");
+                        string name;
+                        cout << "\nEnter guest name to search: ";
+                        cin.ignore();
+                        getline(cin, name);
+
+                        bool found = false;
+                        for (int i = 0; i < 3720; i++)
+                        {
+                            if (roomstatus[i] == 1 && guestnames[i] == name)
+                            {
+                                int month = (i / (31 * 10)) + 1;
+                                int temp = i % (31 * 10);
+                                int date = (temp / 10) + 1;
+                                int room = (temp % 10) + 1;
+                                cout << "Booking found: " << name << " in Room " << room << " on " << date << "/" << month << " for " << daystay[i] << " days.\n";
+                                found = true;
+                            }
+                        }
+                        if (!found)
+                        {
+                            cout << "No booking found for this guest name.\n";
+                        }
+                        cout << "press any key to continue ";
+                        getch();
+                    }
+                    else if (adminchoice == "4")
+                    {
+                        system("cls");
                         // CHECK OUT ROOM
                         cout << "\nEnter Date(1-31) ";
                         cin >> date;
@@ -262,7 +300,7 @@ main()
                         getch();
                     }
                     // Available rooms showing for date entered
-                    else if (adminchoice == "4")
+                    else if (adminchoice == "5")
                     {
                         system("cls");
 
@@ -297,8 +335,9 @@ main()
                         getch();
                     }
                     // Showinng All time Reservation code
-                    else if (adminchoice == "5")
+                    else if (adminchoice == "6")
                     {
+                        system("cls");
                         int found = 0;
                         for (int i = 0; i < 3720; i++)
                         {
@@ -326,8 +365,9 @@ main()
                         getch();
                     }
                     // Exiting the management menu to main menu
-                    else if (adminchoice == "6")
+                    else if (adminchoice == "7")
                     {
+                        system("cls");
                         cout << "Exiting the System : ";
                         break;
                     }
@@ -340,6 +380,7 @@ main()
             // if login crediantials entered wrong three times
             else
             {
+                system("cls");
                 cout << "Too many login attempts \n";
                 break;
             }
@@ -362,7 +403,7 @@ main()
                 cout << "3 - Tour Packages         \n";
                 cout << "4 - Delete My Booking \n";
                 cout << "5 - Information about leepa valley \n";
-                cout << "6 - Exit \n";
+                cout << "6 - Return to main menu  \n";
                 string guestchoice;
                 cout << "Enter your choice ";
                 cin >> guestchoice;
@@ -405,11 +446,9 @@ main()
                         cout << "Enter your name : ";
                         cin.ignore();
                         getline(cin, guestnames[index]);
-                        getline(cin, allguestnames[index]);
                         allguestnames[index] = guestnames[index];
                         cout << "How many days you want to stay : ";
                         cin >> daystay[index];
-                        cin >> alldaystay[index];
                         alldaystay[index] = daystay[index];
                         if (room <= 4)
                         {
@@ -491,6 +530,95 @@ main()
                     cout << "2 - 5day leepa vallley tour Pakage (4 nights and 5 days )  RS 50000 per person\n";
                     cout << "3 - 7day leepa vallley tour Pakage (6 nights and 7 days )  RS 60000 per person\n";
                     cout << "More information about tou packages is on our website and you can avail this from there \n";
+                    char bookPackage;
+                    cout << "\nDo you want to book a tour package? (y/n): ";
+                    cin >> bookPackage;
+                    if (bookPackage == 'y' || bookPackage == 'Y')
+                    {
+                        int packageChoice;
+                        cout << "Enter package number (1-3): ";
+                        cin >> packageChoice;
+                        if (packageChoice >= 1 && packageChoice <= 3)
+                        {
+                            int days, nights, price;
+                            if (packageChoice == 1)
+                            {
+                                days = 3;
+                                nights = 2;
+                                price = 30000;
+                            }
+                            else if (packageChoice == 2)
+                            {
+                                days = 5;
+                                nights = 4;
+                                price = 50000;
+                            }
+                            else if (packageChoice == 3)
+                            {
+                                days = 7;
+                                nights = 6;
+                                price = 60000;
+                            }
+                            int numPeople;
+                            cout << "Enter number of people: ";
+                            cin >> numPeople;
+                            if (numPeople >= 1)
+                            {
+                                int startDate, startMonth;
+                                cout << "Enter start date (1-31): ";
+                                cin >> startDate;
+                                cout << "Enter start month (1-12): ";
+                                cin >> startMonth;
+                                if (startDate >= 1 && startDate <= DAYS && startMonth >= 1 && startMonth <= MONTHS)
+                                {
+                                    int availableRooms[10];
+                                    int availCount = 0;
+                                    for (int room = 1; room <= ROOMS; room++)
+                                    {
+                                        int index = (startMonth - 1) * DAYS * ROOMS + (startDate - 1) * ROOMS + (room - 1);
+                                        if (roomstatus[index] == 0)
+                                        {
+                                            availableRooms[availCount++] = room;
+                                        }
+                                    }
+                                    if (availCount >= numPeople)
+                                    {
+                                        string guestName;
+                                        cout << "Enter guest name: ";
+                                        cin.ignore();
+                                        getline(cin, guestName);
+                                        for (int i = 0; i < numPeople; i++)
+                                        {
+                                            int room = availableRooms[i];
+                                            int index = (startMonth - 1) * DAYS * ROOMS + (startDate - 1) * ROOMS + (room - 1);
+                                            roomstatus[index] = 1;
+                                            daystay[index] = nights;
+                                            guestnames[index] = guestName;
+                                            cout << "Room " << room << " booked for package.\n";
+                                        }
+                                        cout << "Package booked successfully for " << numPeople << " people.\n";
+                                        cout << "Total cost: RS " << price * numPeople << "\n";
+                                    }
+                                    else
+                                    {
+                                        cout << "Not enough rooms available for " << numPeople << " people.\n";
+                                    }
+                                }
+                                else
+                                {
+                                    cout << "Invalid date or month.\n";
+                                }
+                            }
+                            else
+                            {
+                                cout << "Invalid number of people.\n";
+                            }
+                        }
+                        else
+                        {
+                            cout << "Invalid package choice.\n";
+                        }
+                    }
 
                     cout << "Press any key to continue ";
                     getch();
@@ -649,7 +777,7 @@ main()
             system("cls");
             cout << "Wrong option chosed \n";
         }
-        cout << "\n\n\nPress any key to continue \n";
+        cout << "\nPress any key to continue \n";
         getch();
     } //--end of main while loop
     // End of Program
