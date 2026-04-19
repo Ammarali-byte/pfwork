@@ -6,9 +6,6 @@ using namespace std;
 main()
 {
 
-    int DAYS = 31;
-    int MONTHS = 12;
-    int ROOMS = 10;
     int room, month, date;
     int index;
 
@@ -115,7 +112,8 @@ main()
                     cout << "4 - Check out      \n";
                     cout << "5 - show available rooms \n";
                     cout << "6 - Check  all time Reservation  \n";
-                    cout << "7 - Exit \n";
+                    cout << "7 - Edit prices \n";
+                    cout << "8 - Exit \n";
                     // taking choice from admin
                     string adminchoice;
                     cout << "Enter your choice : ";
@@ -142,9 +140,9 @@ main()
                             continue;
                         }
 
-                        cout << "Rooms No 1 to 4 are standard  (Price = RS 7500) \n";
-                        cout << "Rooms No 5 to 8 are Deluxe  (Price = RS 10000)\n";
-                        cout << "Rooms No 9 and 10 are Suite ( Price = RS 15000)\n";
+                        cout << "Rooms No 1 to 4 are standard  (Price = RS" << roomprice[1] << " )";
+                        cout << "Rooms No 5 to 8 are Deluxe  (Price = RS" << roomprice[5] << " ) \n";
+                        cout << "Rooms No 9 and 10 are Suite ( Price = RS " << roomprice[9] << ")\n";
                         cout << "\nEnter Room number (1-10) ";
                         cin >> room;
                         if (room < 1 || room > 10)
@@ -318,15 +316,15 @@ main()
                                 cout << "Room No " << room;
                                 if (room <= 4)
                                 {
-                                    cout << "  Standard Room is available \n Price = RS 7500 \n";
+                                    cout << "  Standard Room is available \n Price = " << roomprice[1] << " \n";
                                 }
                                 else if (room > 4 && room <= 8)
                                 {
-                                    cout << "  Deluxe Room is available \n Price = RS 10000 \n";
+                                    cout << "  Deluxe Room is available \n Price = R" << roomprice[5] << " \n";
                                 }
                                 else
                                 {
-                                    cout << " Suite/Sweet Room is available \n Price = RS 15000 \n";
+                                    cout << " Suite/Sweet Room is available \n Price = RS " << roomprice[9] << " \n";
                                 }
                             }
                         }
@@ -363,8 +361,48 @@ main()
                         cout << "Press any key to continue  ";
                         getch();
                     }
-                    // Exiting the management menu to main menu
                     else if (adminchoice == "7")
+                    {
+                        system("cls");
+                        string category;
+                        cout << "Enter the room category You want to edit price(Standard or Deluxe or Suite ) ";
+                        cin >> category;
+                        cin.ignore();
+                        int newprice;
+                        cout << "Enter new price ";
+                        cin >> newprice;
+                        if (category == "Standard")
+                        {
+                            roomprice[1] = newprice;
+                            roomprice[2] = newprice;
+                            roomprice[3] = newprice;
+                            roomprice[4] = newprice;
+                            cout << "\nYou successfully changed the price of " << category << " rooms to RS " << newprice << "\n";
+                        }
+                        else if (category == "Deluxe")
+                        {
+                            roomprice[5] = newprice;
+                            roomprice[6] = newprice;
+                            roomprice[7] = newprice;
+                            roomprice[8] = newprice;
+                            cout << "\nYou successfully changed the price of " << category << " rooms to RS " << newprice << "\n";
+                        }
+                        else if (category == "Suite")
+                        {
+                            roomprice[9] = newprice;
+                            roomprice[10] = newprice;
+                            cout << "\nYou successfully changed the price of " << category << " rooms to RS " << newprice << "\n";
+                        }
+                        else
+                        {
+                            cout << "\nSuch room category does not exist. Please enter Standard, Deluxe, or Suite.\n";
+                        }
+
+                        cout << "Press any key to continue\n";
+                        getch();
+                    }
+                    // Exiting the management menu to main menu
+                    else if (adminchoice == "8")
                     {
                         system("cls");
                         cout << "Exiting the System : ";
@@ -374,7 +412,7 @@ main()
                     {
                         cout << "Wrong choice entered ";
                     }
-                } // start of while  loop in admin menu
+                } // end of while  loop in admin menu
             }
             // if login crediantials entered wrong three times
             else
@@ -421,6 +459,7 @@ main()
                     }
                     cout << "\nEnter month (1-12) ";
                     cin >> month;
+
                     if (month < 1 || month > 12)
                     {
                         cout << "Invalid month. Please enter 1-12.\n";
@@ -428,9 +467,9 @@ main()
                         continue;
                     }
 
-                    cout << "Rooms No 1 to 4 are standard  (Price = RS 7500) \n";
-                    cout << "Rooms No 5 to 8 are Deluxe  (Price = RS 10000)\n";
-                    cout << "Rooms No 9 and 10 are Suite ( Price = RS 15000)\n";
+                    cout << "Rooms No 1 to 4 are standard  (Price = RS" << roomprice[1] << " )";
+                    cout << "Rooms No 5 to 8 are Deluxe  (Price = RS" << roomprice[5] << " ) \n";
+                    cout << "Rooms No 9 and 10 are Suite ( Price = RS " << roomprice[9] << ")\n";
                     cout << "\nEnter Room number (1-10) ";
                     cin >> room;
                     if (room < 1 || room > 10)
@@ -491,8 +530,20 @@ main()
 
                     cout << "\nEnter Date(1-31) ";
                     cin >> date;
+                    if (date < 1 || date > 31)
+                    {
+                        cout << "Invalid date. Please enter 1-31.\n";
+                        getch();
+                        continue;
+                    }
                     cout << "\nEnter month (1-12)";
                     cin >> month;
+                    if (month < 1 || month > 12)
+                    {
+                        cout << "Invalid month. Please enter 1-12.\n";
+                        getch();
+                        continue;
+                    }
 
                     cout << "\n Available rooms \n";
 
@@ -504,15 +555,15 @@ main()
                             cout << "Room No " << room;
                             if (room <= 4)
                             {
-                                cout << "  Standard Room is available \n Price = RS 7500 \n";
-                            }
+                                cout << "  Standard Room is available \n Price = " << roomprice[1] << " \n";
+                                                        }
                             else if (room > 4 && room <= 8)
                             {
-                                cout << "  Deluxe Room is available \n Price = RS 10000 \n";
+                                cout << "  Deluxe Room is available \n Price = R" << roomprice[5] << " \n";
                             }
                             else
                             {
-                                cout << " Suite/Sweet Room is available \n Price = RS 15000 \n";
+                                cout << " Suite/Sweet Room is available \n Price = RS " << roomprice[9] << " \n";
                             }
                         }
                     }
@@ -530,7 +581,7 @@ main()
                     cout << "3 - 7day leepa vallley tour Pakage (6 nights and 7 days )  RS 60000 per person\n";
                     cout << "More information about tou packages is on our website and you can avail this from there \n";
                     char bookPackage;
-                    cout << "\nDo you want to book a tour package? (y/n): ";
+                    cout << "\nDo you want to book a tour package? (press \"y\" for yes or\" n\" for no ): ";
                     cin >> bookPackage;
                     if (bookPackage == 'y' || bookPackage == 'Y')
                     {
@@ -563,18 +614,30 @@ main()
                             cin >> numPeople;
                             if (numPeople >= 1)
                             {
-                                int startDate, startMonth;
+                                int startdate, startmonth;
                                 cout << "Enter start date (1-31): ";
-                                cin >> startDate;
+                                cin >> startdate;
+                                if (startdate < 1 || startdate > 31)
+                                {
+                                    cout << "Invalid date. Please enter 1-31.\n";
+                                    getch();
+                                    continue;
+                                }
                                 cout << "Enter start month (1-12): ";
-                                cin >> startMonth;
-                                if (startDate >= 1 && startDate <= DAYS && startMonth >= 1 && startMonth <= MONTHS)
+                                cin >> startmonth;
+                                if (startmonth < 1 || startmonth > 12)
+                                {
+                                    cout << "Invalid month. Please enter 1-12.\n";
+                                    getch();
+                                    continue;
+                                }
+                                if (startdate >= 1 && startdate <= 31 && startmonth >= 1 && startmonth <= 12)
                                 {
                                     int availableRooms[10];
                                     int availCount = 0;
-                                    for (int room = 1; room <= ROOMS; room++)
+                                    for (int room = 1; room <= 10; room++)
                                     {
-                                        int index = (startMonth - 1) * DAYS * ROOMS + (startDate - 1) * ROOMS + (room - 1);
+                                        int index = (startmonth - 1) * 31 * 10 + (startdate - 1) * 10 + (room - 1);
                                         if (roomstatus[index] == 0)
                                         {
                                             availableRooms[availCount++] = room;
@@ -589,10 +652,13 @@ main()
                                         for (int i = 0; i < numPeople; i++)
                                         {
                                             int room = availableRooms[i];
-                                            int index = (startMonth - 1) * DAYS * ROOMS + (startDate - 1) * ROOMS + (room - 1);
+                                            int index = (startmonth - 1) * 31 * 10 + (startdate - 1) * 10 + (room - 1);
                                             roomstatus[index] = 1;
+                                            allroomstatus[index] = 1;
                                             daystay[index] = nights;
+                                            alldaystay[index] = nights;
                                             guestnames[index] = guestName;
+                                            allguestnames[index] = guestName;
                                             cout << "Room " << room << " booked for package.\n";
                                         }
                                         cout << "Package booked successfully for " << numPeople << " people.\n";
