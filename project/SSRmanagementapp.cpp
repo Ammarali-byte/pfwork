@@ -5,12 +5,11 @@
 using namespace std;
 main()
 {
-    
 
     int DAYS = 31;
     int MONTHS = 12;
     int ROOMS = 10;
-    int room = 10, month = 12, date = 31;
+    int room, month, date;
     int index;
 
     // DATA Structures
