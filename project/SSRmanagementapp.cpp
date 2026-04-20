@@ -113,7 +113,7 @@ main()
                     cout << "5 - show available rooms \n";
                     cout << "6 - Check  all time Reservation  \n";
                     cout << "7 - Edit prices \n";
-                    cout << "8 - Exit \n";
+                    cout << "8 - Return to main menu  \n";
                     // taking choice from admin
                     string adminchoice;
                     cout << "Enter your choice : ";
@@ -405,7 +405,7 @@ main()
                     else if (adminchoice == "8")
                     {
                         system("cls");
-                        cout << "Exiting the System : ";
+                        cout << " returning to main menu : ";
                         break;
                     }
                     else
