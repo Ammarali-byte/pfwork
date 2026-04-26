@@ -1,15 +1,18 @@
 #include <iostream>
-
 using namespace std;
-main()
+char wordspostmortem(char word[]);
+    main()
 {
     char word[100];
     cout << "Enter the word you want to enter ";
     cin >> word;
-    int i = 0;
-    while (word[i] != '\0')
+    wordspostmortem(word);
+}
+char wordspostmortem(char word[])
+{
+    for (int i = 0; word[i] != '\0'; i++)
     {
-        cout<<word[i]<<" is fond at position "<<i<<endl;
-        i++;
+        cout << word[i] << " is founr at postion " << i
+             << endl;
     }
 }
