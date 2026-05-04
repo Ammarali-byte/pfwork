@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
-void swaplargest(int arr[][5], int n);
+void swap(int arr[][5], int n);
 main()
 {
     int n;
-    cout << "Enter the number of rows : ";
+    cout << "Enter the number of rows ";
     cin >> n;
     int arr[n][5];
     for (int i = 0; i < n; i++)
@@ -15,7 +15,7 @@ main()
             cin >> arr[i][j];
         }
     }
-    cout<<"Orignal matrix\n";
+    cout << "Orignal array \n";
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < 5; j++)
@@ -24,37 +24,40 @@ main()
         }
         cout << endl;
     }
-    swaplargest(arr, n);
-    cout<<"Matrix after swapping \n";
+    swap(arr, n);
+    cout << "Array after swapping \n";
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < 5; j++)
         {
-            cout << arr[i][j]<<" ";
+            cout << arr[i][j] << " ";
         }
-        cout<<endl;
+        cout << endl;
     }
 }
-void swaplargest(int arr[][5], int n)
+void swap(int arr[][5], int n)
 {
-    int largestCol = 0;
-    for (int j = 1; j < 5; j++)
+    int largest = 0;
+    for (int i = 0; i < 5; i++)
     {
         int sum1 = 0, sum2 = 0;
-
-        for (int i = 0; i < n; i++)
-            sum1 += arr[i][largestCol];
-
-        for (int i = 0; i < n; i++)
-            sum2 += arr[i][j];
-
+        for (int j = 0; j < n; j++)
+        {
+            sum1 = sum1 + arr[j][largest];
+        }
+        for (int j = 0; j < n; j++)
+        {
+            sum2 = sum2 + arr[j][i];
+        }
         if (sum2 > sum1)
-            largestCol = j;
+        {
+            largest = i;
+        }
     }
     for (int i = 0; i < n; i++)
     {
         int temp = arr[i][0];
-        arr[i][0] = arr[i][largestCol];
-        arr[i][largestCol] = temp;
+        arr[i][0] = arr[i][largest];
+        arr[i][largest] = temp;
     }
 }
