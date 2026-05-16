@@ -706,7 +706,7 @@ void deletebooking()
         guestnames[idx] = "";
 
         // deleting the booking via function call
-        savebookings(idx);
+       rewritebookingsfile();
 
         cout << "Booking deleted successfully\n";
     }
@@ -806,6 +806,7 @@ void tourpackages()
             {
                 string guestName;
                 cout << "Enter guest name: ";
+                cin.ignore();
                 getline(cin, guestName);
 
                 for (int i = 0; i < numPeople; i++)
