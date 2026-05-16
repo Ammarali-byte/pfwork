@@ -28,6 +28,7 @@ void savehistory(int idx);
 void saveprices();
 void loadbookings();
 void loadoverallhistory();
+void rewritebookingsfile();
 
 // Global DATA Structures
 string guestnames[3720];
@@ -511,7 +512,7 @@ void checkout()
         roomstatus[idx] = 0;
         guestnames[idx] = "";
 
-        savebookings(idx);
+        rewritebookingsfile();
 
         cout << "Room checked out successfully!\n";
     }
@@ -933,4 +934,33 @@ void leepavalley()
     cout << "|                                                                .                                                                |\n";
     cout << "|---------------------------------------------------------------------------------------------------------------------------------|\n";
     pause();
+}
+void rewritebookingsfile()
+{
+    fstream file;
+    file.open("bookings.txt", ios::out);
+
+    if (!file)
+    {
+        cout << "Error updating bookings file\n";
+        return;
+    }
+
+    for (int i = 0; i < 3720; i++)
+    {
+        if (roomstatus[i] == 1)
+        {
+            int m = (i / (31 * 10)) + 1;
+            int temp = i % (31 * 10);
+            int d = (temp / 10) + 1;
+            int r = (temp % 10) + 1;
+
+            file << i << "|"
+                 << guestnames[i] << "|"
+                 << d << "/" << m << "|"
+                 << r << "|\n";
+        }
+    }
+
+    file.close();
 }
