@@ -26,7 +26,7 @@ void pause();
 void savebookings(int idx);
 void savehistory(int idx);
 void saveprices();
-void loadBookings();
+void loadbookings();
 void loadoverallhistory();
 
 // Global DATA Structures
@@ -261,6 +261,7 @@ void pause()
 // booking function
 void booking()
 {
+    loadbookings();
     system("cls");
     while (true)
     {
@@ -432,7 +433,7 @@ void saveprices()
 }
 
 // load booking into arrays
-void loadBookings()
+void loadbookings()
 {
     fstream file;
     file.open("bookings.txt", ios::in);
@@ -488,6 +489,7 @@ void loadBookings()
 // checkout function
 void checkout()
 {
+    loadbookings();
     system("cls");
     int date, month, room;
     cout << "Enter Date (1-31): ";
@@ -523,7 +525,7 @@ void checkout()
 // check bookinng by name function
 void checkbookingbyname()
 {
-    loadBookings();
+    loadbookings();
     system("cls");
     string name;
     cout << "\nEnter guest name to search: ";
@@ -548,9 +550,10 @@ void checkbookingbyname()
     pause();
 }
 
+// check booking by date 
 void checkbookingbydate()
 {
-    loadBookings();
+    loadbookings();
     while (true)
     {
         system("cls");
@@ -591,8 +594,10 @@ void checkbookingbydate()
     }
 }
 
+// showing available rooms 
 void showavailablerooms()
 {
+    loadbookings();
     system("cls");
     cout << "Enter Date (1-31): ";
     cin >> date;
@@ -683,7 +688,7 @@ void editprices()
 
 void deletebooking()
 {
-    loadBookings();
+    loadbookings();
     system("cls");
     cout << "Enter Date (1-31): ";
     cin >> date;
@@ -713,6 +718,7 @@ void deletebooking()
 
 void tourpackages()
 {
+    loadbookings();
     while (true)
     {
         system("cls");
