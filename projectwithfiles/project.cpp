@@ -5,7 +5,7 @@
 
 using namespace std;
 
-// fuctions prototypes
+// =====================fuctions prototypes====================
 int displaymainmenu();
 bool login();
 int adminmenu();
@@ -22,27 +22,29 @@ void deletebooking();
 void leepavalley();
 void pause();
 
-// files functions prototypes
+// ====================files functions prototypes====================
 void savebookings(int idx);
 void savehistory(int idx);
-void saveprices();
 void loadbookings();
 void loadoverallhistory();
 void rewritebookingsfile();
+void saveprices();
+void loadprices();
 
-// Global DATA Structures
+// ====================Global DATA Structures====================
 string guestnames[3720];
 string allguestnames[3720];
-int roomprice[11] = {7500, 7500, 7500, 7500, 7500, 10000, 10000, 10000, 10000, 15000, 15000};
+int roomprice[11] ;
 int roomstatus[3720];
 int allroomstatus[3720];
 
 // Global variables
 int date, month, room, index;
 
-//-----------Driver code------------
+//====================Driver code====================
 main()
 {
+    loadprices();
     while (true) // start of main while loop
     {
         system("cls");
@@ -51,51 +53,54 @@ main()
         if (choice == 1)
         {
             system("cls");
-            login();
-            while (true)
-            {
-                int adminchoice = adminmenu();
 
-                if (adminchoice == 1)
+            if (login()){
+                while (true)
                 {
-                    booking();
-                }
-                else if (adminchoice == 2)
-                {
-                    checkbookingbydate();
-                }
-                else if (adminchoice == 3)
-                {
-                    checkbookingbyname();
-                }
-                else if (adminchoice == 4)
-                {
-                    checkout();
-                }
-                else if (adminchoice == 5)
-                {
-                    showavailablerooms();
-                }
-                else if (adminchoice == 6)
-                {
-                    checkalltimereservation();
-                }
-                else if (adminchoice == 7)
-                {
-                    editprices();
-                }
-                else if (adminchoice == 8)
-                {
-                    system("cls");
-                    cout << " returning to main menu  \n";
-                    break;
-                }
-                else
-                {
-                    cout << "YOU CHOOESED WRONG CHOICE \n";
-                    continue;
+                    int adminchoice = adminmenu();
+
+                    if (adminchoice == 1)
+                    {
+                        booking();
+                    }
+                    else if (adminchoice == 2)
+                    {
+                        checkbookingbydate();
+                    }
+                    else if (adminchoice == 3)
+                    {
+                        checkbookingbyname();
+                    }
+                    else if (adminchoice == 4)
+                    {
+                        checkout();
+                    }
+                    else if (adminchoice == 5)
+                    {
+                        showavailablerooms();
+                    }
+                    else if (adminchoice == 6)
+                    {
+                        checkalltimereservation();
+                    }
+                    else if (adminchoice == 7)
+                    {
+                        editprices();
+                    }
+                    else if (adminchoice == 8)
+                    {
+                        system("cls");
+                        cout << " returning to main menu  \n";
+                        break;
+                    }
+                    else
+                    {
+                        cout << "YOU CHOOESED WRONG CHOICE \n";
+                        continue;
+                    }
                 }
             }
+                
         }
         else if (choice == 2)
         {
@@ -153,10 +158,11 @@ main()
         }
         pause();
     } // end of main while loop
+    return 0;
 
-} // --------------end of driver code-------------
+} //====================end of driver code====================
 
-// login functions
+//====================login functions====================
 bool login()
 {
     string username, pin;
@@ -181,7 +187,7 @@ bool login()
     return false;
 }
 
-// display main menu
+//====================display main menu====================
 int displaymainmenu()
 {
     // system("cls");
@@ -198,7 +204,7 @@ int displaymainmenu()
     cout << " ###   ###     ##  ###                                    \n";
     cout << " ###   ###      #####                                     \n";
 
-    // main menu
+    //----main menu----
     cout << "-------------------------------------------------------\n";
     cout << "-----------Welcome to SERENITY SPRING RESORT----------- \n";
     cout << "-------------------------------------------------------\n";
@@ -211,7 +217,7 @@ int displaymainmenu()
     return choice;
 }
 
-// displaying main menu
+// ====================displaying main menu====================
 int adminmenu()
 {
     system("cls");
@@ -232,7 +238,7 @@ int adminmenu()
     return adminchoice;
 }
 
-// displaying guest menu
+// ====================displaying guest menu====================
 int guestmenu()
 {
     system("cls");
@@ -252,14 +258,14 @@ int guestmenu()
     return guestchoice;
 }
 
-// pausing function
+// ====================pausing function====================
 void pause()
 {
     cout << "Press any key to continue ";
     getch();
 }
 
-// booking function
+// ====================booking function====================
 void booking()
 {
     loadbookings();
@@ -331,7 +337,7 @@ void booking()
     }
 }
 
-// saving booking to files
+// ====================saving booking to booking.txt====================
 void savebookings(int idx)
 {
     fstream file;
@@ -347,7 +353,7 @@ void savebookings(int idx)
     file.close();
 }
 
-// Save all-time reservation history to another file
+//==================== Save all-time reservation history to history.txt====================
 void savehistory(int idx)
 {
     fstream history;
@@ -362,7 +368,7 @@ void savehistory(int idx)
 
     history.close();
 }
-// loading overall history int data structures
+// ====================loading overall history int data structures====================
 void loadoverallhistory()
 {
     fstream history;
@@ -416,7 +422,7 @@ void loadoverallhistory()
     history.close();
 }
 
-// Save room prices file
+// ====================Save room prices file====================
 void saveprices()
 {
     fstream prices;
@@ -433,7 +439,7 @@ void saveprices()
     prices.close();
 }
 
-// load booking into arrays
+// ====================load booking into arrays====================
 void loadbookings()
 {
     fstream file;
@@ -487,7 +493,7 @@ void loadbookings()
     file.close();
 }
 
-// checkout function
+// ====================checkout function====================
 void checkout()
 {
     loadbookings();
@@ -506,7 +512,6 @@ void checkout()
     {
         int bill = roomprice[room];
         cout << "Guest: " << guestnames[idx] << "\n";
-        cout << "Days stayed: " << "\n";
         cout << "Total bill: RS " << bill << "\n";
 
         roomstatus[idx] = 0;
@@ -523,7 +528,7 @@ void checkout()
     pause();
 }
 
-// check bookinng by name function
+// ====================check bookinng by name function====================
 void checkbookingbyname()
 {
     loadbookings();
@@ -551,7 +556,7 @@ void checkbookingbyname()
     pause();
 }
 
-// check booking by date 
+// ====================check booking by date====================
 void checkbookingbydate()
 {
     loadbookings();
@@ -595,7 +600,7 @@ void checkbookingbydate()
     }
 }
 
-// showing available rooms 
+// ====================showing available rooms====================
 void showavailablerooms()
 {
     loadbookings();
@@ -624,11 +629,11 @@ void showavailablerooms()
     cout << "Press any key to continue ";
     getch();
 }
-
+// ====================checking histrory function====================
 void checkalltimereservation()
 {
     loadoverallhistory();
-    
+
     int found = 0;
     for (int i = 0; i < 3720; i++)
     {
@@ -649,7 +654,7 @@ void checkalltimereservation()
     pause();
 }
 
-// function to edit prices
+// ====================function to edit prices====================
 void editprices()
 {
     system("cls");
@@ -686,7 +691,7 @@ void editprices()
     saveprices();
     pause();
 }
-
+// ====================function to delete booking====================
 void deletebooking()
 {
     loadbookings();
@@ -706,7 +711,7 @@ void deletebooking()
         guestnames[idx] = "";
 
         // deleting the booking via function call
-       rewritebookingsfile();
+        rewritebookingsfile();
 
         cout << "Booking deleted successfully\n";
     }
@@ -717,6 +722,7 @@ void deletebooking()
     pause();
 }
 
+// ====================tour packages function====================
 void tourpackages()
 {
     loadbookings();
@@ -778,6 +784,7 @@ void tourpackages()
             int startdate, startmonth;
             cout << "Enter start date (1-31): ";
             cin >> startdate;
+            date = startdate;
             if (startdate < 1 || startdate > 31)
             {
                 cout << "Invalid date.\n";
@@ -786,6 +793,7 @@ void tourpackages()
             }
             cout << "Enter start month (1-12): ";
             cin >> startmonth;
+            month = startmonth;
             if (startmonth < 1 || startmonth > 12)
             {
                 cout << "Invalid month.\n";
@@ -812,6 +820,7 @@ void tourpackages()
                 for (int i = 0; i < numPeople; i++)
                 {
                     int r = availableRooms[i];
+                    room = r;
                     int idx = (startmonth - 1) * 31 * 10 + (startdate - 1) * 10 + (r - 1);
                     roomstatus[idx] = 1;
                     allroomstatus[idx] = 1;
@@ -836,7 +845,7 @@ void tourpackages()
     }
 }
 
-// information about leepa valley function
+// ====================information about leepa valley function====================
 void leepavalley()
 {
 
@@ -936,6 +945,8 @@ void leepavalley()
     cout << "|---------------------------------------------------------------------------------------------------------------------------------|\n";
     pause();
 }
+
+// ====================function to delete booking from file when checkout====================
 void rewritebookingsfile()
 {
     fstream file;
@@ -964,4 +975,54 @@ void rewritebookingsfile()
     }
 
     file.close();
+}
+// ====================loading prices from file====================
+void loadprices()
+{
+    fstream price;
+    price.open("prices.txt", ios::in);
+
+    if (!price)
+    {
+        return;
+    }
+
+    string record;
+
+    while (getline(price, record))
+    {
+        string roomno = "";
+        string roompricefile = "";
+
+        int slashcount = 0;
+        int x = 0;
+
+        while (x < record.length())
+        {
+            if (record[x] == '|')
+            {
+                slashcount++;
+            }
+            else
+            {
+                if (slashcount == 0)
+                {
+                    roomno = roomno + record[x];
+                }
+                else if (slashcount == 1)
+                {
+                    roompricefile = roompricefile + record[x];
+                }
+            }
+
+            x++;
+        }
+
+        int roomnumber = stoi(roomno);
+        int pr = stoi(roompricefile);
+
+        roomprice[roomnumber] = pr;
+    }
+
+    price.close();
 }
