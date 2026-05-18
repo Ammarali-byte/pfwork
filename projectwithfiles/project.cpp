@@ -21,6 +21,7 @@ void tourpackages();
 void deletebooking();
 void leepavalley();
 void pause();
+bool validdate(int date, int month);
 
 // ====================files functions prototypes====================
 void savebookings(int idx);
@@ -34,12 +35,12 @@ void loadprices();
 // ====================Global DATA Structures====================
 string guestnames[3720];
 string allguestnames[3720];
-int roomprice[11] ;
-int roomstatus[3720];
-int allroomstatus[3720];
+int roomprice[11] = {0};
+int roomstatus[3720] = {0};
+int allroomstatus[3720] = {0};
 
 // Global variables
-int date, month, room, index;
+int date, month, room;
 
 //====================Driver code====================
 main()
@@ -54,7 +55,8 @@ main()
         {
             system("cls");
 
-            if (login()){
+            if (login())
+            {
                 while (true)
                 {
                     int adminchoice = adminmenu();
@@ -100,7 +102,6 @@ main()
                     }
                 }
             }
-                
         }
         else if (choice == 2)
         {
@@ -265,6 +266,37 @@ void pause()
     getch();
 }
 
+// ====================date validation function====================
+bool validdate(int date, int month)
+{
+    if (month < 1 || month > 12)
+    {
+        return false;
+    }
+
+    if (date < 1)
+    {
+        return false;
+    }
+
+    if (month == 2 && date > 28)
+    {
+        return false;
+    }
+
+    if ((month == 4 || month == 6 || month == 9 || month == 11) && date > 30)
+    {
+        return false;
+    }
+
+    if (date > 31)
+    {
+        return false;
+    }
+
+    return true;
+}
+
 // ====================booking function====================
 void booking()
 {
@@ -275,21 +307,16 @@ void booking()
 
         cout << "\nEnter Date (1-31): ";
         cin >> date;
-        if (date < 1 || date > 31)
-        {
-            cout << "Invalid date.\n";
-            getch();
-            continue;
-        }
+       
 
         cout << "Enter Month (1-12): ";
         cin >> month;
-        if (month < 1 || month > 12)
-        {
-            cout << "Invalid month.\n";
-            getch();
-            continue;
-        }
+       if (!validdate( date, month))
+       {
+        cout<<"Invalid date or month ";
+        pause();
+        continue;
+       }
 
         cout << "Rooms  1-4  : Standard  (RS " << roomprice[1] << "/night)\n";
         cout << "Rooms  5-8  : Deluxe    (RS " << roomprice[5] << "/night)\n";
@@ -331,8 +358,7 @@ void booking()
         {
             cout << "Sorry, that room is not available on that date.\n";
         }
-        cout << "Press any key to continue ";
-        getch();
+        pause();
         break;
     }
 }
@@ -503,8 +529,20 @@ void checkout()
     cin >> date;
     cout << "Enter Month (1-12): ";
     cin >> month;
+    if (!validdate(date, month))
+    {
+        cout << "Invalid date or month ";
+        pause();
+        return;
+    }
     cout << "Enter Room Number (1-10): ";
     cin >> room;
+    if (room < 1 || room > 10)
+    {
+        cout << "Invalid room number";
+        pause();
+        return;
+    }
 
     int idx = (month - 1) * 31 * 10 + (date - 1) * 10 + (room - 1);
 
@@ -565,19 +603,13 @@ void checkbookingbydate()
         system("cls");
         cout << "Enter Date (1-31): ";
         cin >> date;
-        if (date < 1 || date > 31)
-        {
-            cout << "Invalid date.\n";
-            getch();
-            continue;
-        }
-
+       
         cout << "Enter Month (1-12): ";
         cin >> month;
-        if (month < 1 || month > 12)
+        if (!validdate(date, month))
         {
-            cout << "Invalid month.\n";
-            getch();
+            cout << "Invalid date or month ";
+            pause();
             continue;
         }
 
@@ -594,8 +626,7 @@ void checkbookingbydate()
         }
         if (!found)
             cout << "No bookings found for this date.\n";
-        cout << "Press any key to continue ";
-        getch();
+        pause();
         break;
     }
 }
@@ -609,6 +640,12 @@ void showavailablerooms()
     cin >> date;
     cout << "Enter Month (1-12): ";
     cin >> month;
+    if (!validdate(date, month))
+    {
+        cout << "Invalid date or month ";
+        pause();
+        return;
+    }
 
     cout << "\nAvailable rooms on " << date << "/" << month << ":\n";
     for (int r = 1; r <= 10; r++)
@@ -626,8 +663,7 @@ void showavailablerooms()
             cout << "/night\n";
         }
     }
-    cout << "Press any key to continue ";
-    getch();
+    pause();
 }
 // ====================checking histrory function====================
 void checkalltimereservation()
@@ -700,12 +736,29 @@ void deletebooking()
     cin >> date;
     cout << "Enter Month (1-12): ";
     cin >> month;
+    
+    if (!validdate(date, month))
+    {
+        cout << "Invalid date or month ";
+        pause();
+        return;
+    }
     cout << "Enter Room Number (1-10): ";
     cin >> room;
+    if (room < 1 || room > 10)
+    {
+        cout << "Invalid room number";
+        pause();
+        return;
+    }
+    string name;
+    cout<<"Enter the name for which room is booked ";
+    cin.ignore();
+    getline(cin,name);
 
     int idx = (month - 1) * 31 * 10 + (date - 1) * 10 + (room - 1);
 
-    if (roomstatus[idx] == 1)
+    if (roomstatus[idx] == 1 && guestnames[idx] == name)
     {
         roomstatus[idx] = 0;
         guestnames[idx] = "";
@@ -785,19 +838,14 @@ void tourpackages()
             cout << "Enter start date (1-31): ";
             cin >> startdate;
             date = startdate;
-            if (startdate < 1 || startdate > 31)
-            {
-                cout << "Invalid date.\n";
-                getch();
-                continue;
-            }
+            
             cout << "Enter start month (1-12): ";
             cin >> startmonth;
             month = startmonth;
-            if (startmonth < 1 || startmonth > 12)
+            if (!validdate(date, month))
             {
-                cout << "Invalid month.\n";
-                getch();
+                cout << "Invalid date or month ";
+                pause();
                 continue;
             }
 
