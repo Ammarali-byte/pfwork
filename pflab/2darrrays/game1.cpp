@@ -24,6 +24,7 @@ void printBoard();
 void movePlayerLeft();
 void movePlayerRight();
 void fire();
+void moveFire(int timestep);
 void moveEnemy(char object, string direction);
 
 int main()
