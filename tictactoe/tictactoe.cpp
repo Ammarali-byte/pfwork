@@ -210,25 +210,46 @@ bool draw(char symbol, char symbol1)
 void inputfromplayer1(char symbol)
 {
     string coordinate;
+    while (true)
+    {
+        cout << " Enter The coordinate for your move like A1,B2 (FIRST PLAYER) ";
+        cin >> coordinate;
 
-    cout << " Enter The coordinate for your move like A1,B2 (FIRST PLAYER) ";
-    cin >> coordinate;
+        int row = coordinate[0] - 'A';
+        int cols = coordinate[1] - '1';
 
-    int row = coordinate[0] - 'A';
-    int cols = coordinate[1] - '1';
-
-    board[row][cols] = symbol;
+        if (board[row][cols] == ' ')
+        {
+            board[row][cols] = symbol;
+            break;
+        }
+        else
+        {
+            cout << "Already entered here please add somewhere  other : \n\n\n";
+        }
+    }
 }
 
 void inputfromplayer2(char symbol)
 {
     string coordinate;
 
-    cout << " Enter The coordinate for your move like A1,B2 (SECOND PLAYER)";
-    cin >> coordinate;
+    while (true)
+    {
+        cout << " Enter The coordinate for your move like A1,B2 (SECOND PLAYER)";
+        cin >> coordinate;
 
-    int row = coordinate[0] - 'A';
-    int cols = coordinate[1] - '1';
+        int row = coordinate[0] - 'A';
+        int cols = coordinate[1] - '1';
 
-    board[row][cols] = symbol;
+        if (board[row][cols] == ' ')
+        {
+            board[row][cols] = symbol;
+            break;
+        }
+        else
+        {
+            cout << "Already entered here please add somewhere  other : \n\n\n";
+        }
+    }
 }
