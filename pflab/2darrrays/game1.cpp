@@ -61,6 +61,7 @@ int main()
         else if (choice == 'f')
         {
             fire();
+            moveFire(1);
         }
         else if (choice == 'm')
         {
@@ -74,7 +75,7 @@ int main()
         {
             break;
         }
-        moveFire(1);
+        
     }
 
     return 0;
