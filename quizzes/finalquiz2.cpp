@@ -15,7 +15,7 @@ main()
 }
 string shiftNext(string text, char target)
 {
-    for (int i = 0; i < text.length() - 1; i++)
+    for (int i = 0; i < text.length() ; i++)
     {
         if (text[i] == target)
             if (text[i] == 'z')
